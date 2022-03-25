@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<p></p>
+	<button>activar</button>
+	<script>
+		const p = document.querySelector('p')
+		const button = document.querySelector('button')
+
+		button.addEventListener('click', () => {
+
+			const event = new DeviceOrientationEvent("deviceorientation")
+			// event.requestPermission()
+
+			window.addEventListener('deviceorientation', e => {
+				p.innerText = `${e.beta.toFixed(3)}\n ${e.gamma.toFixed(3)}`
+			}, false)
+		})
+	</script>
+</body>
+</html>
