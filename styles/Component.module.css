@@ -1,0 +1,38 @@
+.menu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 1rem;
+	height: 100vh;
+	border: 1px solid tomato;
+	color: white;
+}
+
+.menuItem {
+	display: flex;
+	gap: 1rem;
+	padding: 1rem;
+	width: 400px;
+	max-width: 100%;
+	cursor: pointer;
+	background-color: #383B42;
+	border-top: 2px solid #9C9C9C;
+	border-left: 2px solid #9C9C9C;
+	border-right: 2px solid #585858;
+	border-bottom: 2px solid #585858;
+	border-radius: 10px;
+	font-size: 1.3rem;
+	letter-spacing: 0.1rem;
+	font-family: 'Poppins';
+	transition: background-color .1s ease;
+}
+
+.menuItem svg {
+	height: 1.6rem;
+	width: 1.6rem;
+}
+
+.menuItem:hover {
+	background-color: #484c57
+}
