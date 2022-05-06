@@ -16,14 +16,7 @@ const App: FunctionComponent = () => {
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 		<StarsBackground />
-		<Menu>
-			{!router.query.dynamic
-				? <MenuItems />
-				: <MenuItemDetail>
-					{router.query.dynamic}
-				</MenuItemDetail>
-			}
-		</Menu>
+		<Menu />
 	</div>
 }
 

@@ -1,17 +1,10 @@
 import React, { FunctionComponent, MouseEventHandler } from 'react'
 import styles from '../styles/Component.module.css'
-import { MdOutlineBadge, MdManageAccounts, MdVerified, MdOutline3P, MdConstruction, MdPublic }  from 'react-icons/md'
-import { IconType } from 'react-icons'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { get, ItemType, list } from '../utils/items'
 
-interface MenuItemProps {
-	title: string
-	url: string
-	icon: IconType
-}
-
-export const MenuItem: FunctionComponent<MenuItemProps> = (props) => {
+export const MenuItem: FunctionComponent<ItemType> = (props) => {
 	const router = useRouter()
 
 	const handleClick:MouseEventHandler = (e) => {
@@ -24,27 +17,31 @@ export const MenuItem: FunctionComponent<MenuItemProps> = (props) => {
 	</div>
 }
 
-export const MenuItemDetail: FunctionComponent = (props) => {
+export const MenuItemDetail: FunctionComponent<{item:ItemType}> = ({children,item}) => {
 	return <>
 		<Link href="/" as="/">Volver</Link>
-		{props.children}
+		<h1><item.icon /> {item.title}</h1>
+		{children}
 	</>
 }
 
 export const MenuItems: FunctionComponent = (props) => {
 	return <>
-		<MenuItem icon={MdManageAccounts} title="Skills" url="/skills" />
-		<MenuItem icon={MdOutlineBadge} title="Resume" url="/resume" />
-		<MenuItem icon={MdVerified} title="Achievements" url="/achievements" />
-		<MenuItem icon={MdPublic} title="Social" url="/social" />
-		<MenuItem icon={MdConstruction} title="Tools I Created" url="/tools" />
-		<MenuItem icon={MdOutline3P} title="Give me feedback" url="/feedback" />
+		{list.map(item => <MenuItem {...item} />)}
 	</>
 }
 
-const Menu: FunctionComponent = (props) => {
+const Menu: FunctionComponent = () => {
+	const router = useRouter()
+	const route = router.query.dynamic
+	const item = get('/' + route)
+
 	return <div className={styles.menu}>
-		{props.children}
+		{!route
+			? <MenuItems />
+			: <MenuItemDetail item={item}>
+			</MenuItemDetail>
+		}
 	</div>
 }
 
