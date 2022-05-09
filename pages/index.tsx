@@ -3,4 +3,4 @@ import App from "../components/App";
 
 const IndexPage:NextPage = () => <App />
 
-export default () => <App />
+export default IndexPage

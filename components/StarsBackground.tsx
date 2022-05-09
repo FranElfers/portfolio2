@@ -143,4 +143,7 @@ const StarsBackground: FunctionComponent = () => {
   return <canvas className={styles.background} ref={backgroundRef}></canvas>
 }
 
+// netlify error fix
+StarsBackground.displayName = 'StarsBackground'
+
 export default StarsBackground
