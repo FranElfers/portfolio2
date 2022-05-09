@@ -12,17 +12,17 @@ export const MenuItem: FunctionComponent<ItemType> = (props) => {
 		router.push('/[dynamic]', props.url)
 	}
 
-	return <div className={styles.menuItem} onClick={handleClick}>
-		<props.icon/>{props.title}
+	return <div className={[styles.menuItem, styles.itemView].join(" ")} onClick={handleClick}>
+		<props.icon/><h3>{props.title}</h3>
 	</div>
 }
 
 export const MenuItemDetail: FunctionComponent<{item:ItemType}> = ({children,item}) => {
-	return <>
+	return <div className={styles.itemView}>
 		<Link href="/" as="/">Volver</Link>
 		<h1><item.icon /> {item.title}</h1>
 		{children}
-	</>
+	</div>
 }
 
 export const MenuItems: FunctionComponent = (props) => {

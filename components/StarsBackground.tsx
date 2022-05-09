@@ -61,8 +61,10 @@ const StarsBackground: FunctionComponent = () => {
       // resize only when necessary
       if (needResize) {
         //3rd parameter `false` to change the internal canvas size
-        backgroundRef.current.style.width = ''
-        backgroundRef.current.style.height = ''
+        if (backgroundRef.current) {
+          backgroundRef.current.style.width = ''
+          backgroundRef.current.style.height = ''
+        }
         renderer.setSize(width, height, false);
       }
       return needResize;

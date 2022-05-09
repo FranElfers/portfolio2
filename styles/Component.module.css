@@ -9,13 +9,10 @@
 	color: white;
 }
 
-.menuItem {
-	display: flex;
-	gap: 1rem;
+.itemView {
 	padding: 1rem;
 	width: 400px;
 	max-width: 100%;
-	cursor: pointer;
 	background-color: #383B42;
 	border-top: 2px solid #9C9C9C;
 	border-left: 2px solid #9C9C9C;
@@ -24,8 +21,17 @@
 	border-radius: 10px;
 	font-size: 1.3rem;
 	letter-spacing: 0.1rem;
-	font-family: 'Poppins';
 	transition: background-color .1s ease;
+}
+
+.itemView h3 {
+	margin: 0;
+}
+
+.menuItem {
+	cursor: pointer;
+	display: flex;
+	gap: 1rem;
 }
 
 .menuItem svg {

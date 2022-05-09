@@ -1,3 +1,6 @@
+import { NextPage } from "next";
 import App from "../components/App";
 
-export default () => <App />
+const Dynamic:NextPage = () => <App />
+
+export default Dynamic
