@@ -27,7 +27,7 @@ export const MenuItemDetail: FunctionComponent<{item:ItemType}> = ({children,ite
 
 export const MenuItems: FunctionComponent = (props) => {
 	return <>
-		{list.map(item => <MenuItem {...item} />)}
+		{list.map(item => <MenuItem key={item.url} {...item} />)}
 	</>
 }
 

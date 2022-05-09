@@ -1,30 +1,32 @@
 import { FunctionComponent } from 'react'
-import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react'
-import styles from '../styles/Home.module.css'
 import { BufferAttribute, BufferGeometry, DirectionalLight, PerspectiveCamera, Points, PointsMaterial, Scene, TextureLoader, WebGLRenderer } from 'three'
 import { smoothOut } from '../utils/smooth_movement'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import styles from '../styles/Home.module.css'
 
 const StarsBackground: FunctionComponent = () => {
   const [ gyroscopeSupport, setGyroscopeSupport ] = useState(false)
   const backgroundRef = useRef<any>(null)
-
-  useEffect(() => {    
+  
+  useEffect(() => {
+    let frameId:number
     /** Mouse and gyroscope input handlers */
-    let mouseX = 0;
-    let mouseY = 0;
-
+    const inputPosition:{x:number,y:number} = JSON.parse(sessionStorage.getItem('inputPosition') || '{"x":0,"y":0}')
+    
     const mouseHandler = (e:MouseEvent) => {
       if (gyroscopeSupport) return
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+      inputPosition.x = e.clientX
+      inputPosition.y = e.clientY
+      // sessionStorage.setItem('inputPosition', JSON.stringify(inputPosition))
     }
 
     const gyroscopeHandler = (e:DeviceOrientationEvent) => {
-      setGyroscopeSupport(e.gamma !== null && e.beta !== null)
-      mouseX = -((e.gamma || 1) + 90) * 30 // 0 - 5400 resting: 2700
-      mouseY = -((e.beta || 1) + 90) * 30 // 0 - 5400 resting: 2700
+      const hasGyroscope = (e.gamma !== null && e.beta !== null)
+      setGyroscopeSupport(hasGyroscope)
+      if (!hasGyroscope) return
+      inputPosition.x = -((e.gamma || 1) + 90) * 30 // 0 - 5400 resting: 2700
+      inputPosition.y = -((e.beta || 1) + 90) * 30 // 0 - 5400 resting: 2700
+      // sessionStorage.setItem('inputPosition', JSON.stringify(inputPosition))
     }
 
     window.addEventListener("mousemove", mouseHandler);
@@ -34,9 +36,18 @@ const StarsBackground: FunctionComponent = () => {
     /** Position Randomizer Constant; higher number = higher spread */
     const k = 10 /** 5 == -5 to 5 */
     
-    const getRandomParticelPos = (particleCount:number) => {
-      const arr = new Float32Array(particleCount);
-      return arr.map(() => Math.random() * k*2 - k)
+    const getRandomParticelPos = (particleCount:number):Float32Array => {
+      const starsPosition = sessionStorage.getItem('starsPosition')
+      
+      if (starsPosition) {
+        const parsed = JSON.parse(starsPosition)
+        const values:number[] = Object.values(parsed)
+        return new Float32Array(values)
+      }
+
+      const arr = (new Float32Array(particleCount)).map(() => Math.random() * k*2 - k)
+      sessionStorage.setItem('starsPosition', JSON.stringify(arr))
+      return arr
     };
 
 
@@ -57,8 +68,6 @@ const StarsBackground: FunctionComponent = () => {
       return needResize;
     };
 
-
-    /** Main */
     const main = () => {
       if (backgroundRef.current === null) return
       const scene = new Scene();
@@ -96,6 +105,8 @@ const StarsBackground: FunctionComponent = () => {
     
       const stars = new Points(geometry, material);
       scene.add(stars);
+      stars.position.x = inputPosition.x * 0.0001
+      stars.position.y = inputPosition.y * -0.0001
 
       const render = () => {    
         if (resizeRendererToDisplaySize(renderer)) {
@@ -104,14 +115,14 @@ const StarsBackground: FunctionComponent = () => {
           camera.aspect = canvas.clientWidth / canvas.clientHeight;
           camera.updateProjectionMatrix();
         }
-    
-        stars.position.x = smoothOut(stars.position.x, mouseX * 0.0001, 4)
-        stars.position.y = smoothOut(stars.position.y, mouseY * -0.0001, 4)
+
+        stars.position.x = smoothOut(stars.position.x, inputPosition.x * 0.0001, 4)
+        stars.position.y = smoothOut(stars.position.y, inputPosition.y * -0.0001, 4)
     
         renderer.render(scene, camera);
-        requestAnimationFrame(render);
+        frameId = window.requestAnimationFrame(render);
       };
-      requestAnimationFrame(render);
+      frameId = requestAnimationFrame(render);
     };
     main();
     
@@ -119,6 +130,9 @@ const StarsBackground: FunctionComponent = () => {
     return () => {
       window.removeEventListener('deviceorientation', gyroscopeHandler)
       window.removeEventListener('mousemove', mouseHandler)
+      sessionStorage.setItem('inputPosition', JSON.stringify(inputPosition))
+      // cancelAnimationFrame(frameId)
+      // backgroundRef.current?.remove()
     }
   }, [])
 
