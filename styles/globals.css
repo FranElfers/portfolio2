@@ -13,7 +13,7 @@ body {
 
 @font-face {
   font-family: 'Poppins';
-  src: url('/fonts/Poppins-Regular.ttf');
+  src: url('/fonts/Poppins-ExtraLight.ttf');
   font-style: normal;
   font-weight: 400;
   font-display: swap ;
@@ -26,4 +26,13 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+	font-family: inherit;
+}
+
+input {
+	font-family: inherit;
 }
