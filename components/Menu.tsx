@@ -17,15 +17,14 @@ export const MenuItem: FunctionComponent<ItemType> = (props) => {
 	</div>
 }
 
-export const MenuItemDetail: FunctionComponent<{item:ItemType}> = ({children,item}) => {
+export const MenuItemDetail: FunctionComponent<{item:ItemType}> = ({item}) => {
 	return <div className={styles.itemView}>
-		<Link href="/" as="/">Volver</Link>
-		<h1><item.icon /> {item.title}</h1>
-		{children}
+		<h3><item.icon /> {item.title}<Link href="/" as="/">Volver</Link></h3>
+		{item.component && <item.component />}
 	</div>
 }
 
-export const MenuItems: FunctionComponent = (props) => {
+export const MenuItems: FunctionComponent = () => {
 	return <>
 		{list.map(item => <MenuItem key={item.url} {...item} />)}
 	</>
@@ -39,8 +38,7 @@ const Menu: FunctionComponent = () => {
 	return <div className={styles.menu}>
 		{!route
 			? <MenuItems />
-			: <MenuItemDetail item={item}>
-			</MenuItemDetail>
+			: <MenuItemDetail item={item} />
 		}
 	</div>
 }

@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { IconType } from "react-icons";
 import { MdConstruction, MdManageAccounts, MdOutline3P, MdOutlineBadge, MdPublic, MdVerified, MdWarning } from "react-icons/md";
+import Feedback from "../components/Feedback";
 import Skills from "../components/Skills";
 
 export interface ItemType {
@@ -41,7 +42,8 @@ export const list: ItemType[] = [
 	{
 		icon: MdOutline3P,
 		url: '/feedback',
-		title: 'Give me feedback'
+		title: 'Give me feedback',
+		component: Feedback
 	}
 ]
 
