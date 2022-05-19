@@ -19,7 +19,7 @@ export const MenuItem: FunctionComponent<ItemType> = (props) => {
 
 export const MenuItemDetail: FunctionComponent<{item:ItemType}> = ({item}) => {
 	return <div className={styles.itemView}>
-		<h3><item.icon /> {item.title}<Link href="/" as="/">Volver</Link></h3>
+		<h3><item.icon /> {item.title}<Link href="/" as="/">Back</Link></h3>
 		{item.component && <item.component />}
 	</div>
 }

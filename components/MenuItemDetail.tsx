@@ -4,7 +4,7 @@ import styles from '../styles/Component.module.css'
 
 const MenuItemDetail: FunctionComponent = (props) => {
 	return <div className={styles.itemView}>
-		<Link href="/" as="/">Volver</Link>
+		<Link href="/" as="/">Back</Link>
 		{props.children}
 	</div>
 }
