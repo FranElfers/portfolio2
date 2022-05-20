@@ -3,6 +3,7 @@ import { IconType } from "react-icons";
 import { MdConstruction, MdManageAccounts, MdOutline3P, MdOutlineBadge, MdPublic, MdVerified, MdWarning } from "react-icons/md";
 import Feedback from "../components/Feedback";
 import Skills from "../components/Skills";
+import Social from "../components/Social"
 
 export interface ItemType {
 	title: string
@@ -32,7 +33,8 @@ export const list: ItemType[] = [
 	{
 		icon: MdPublic,
 		url: '/social',
-		title: 'Social'
+		title: 'Social',
+		component: Social
 	},
 	{
 		icon: MdConstruction,

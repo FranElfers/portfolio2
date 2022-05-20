@@ -10,7 +10,7 @@
 
 .itemView {
 	padding: 1rem;
-	width: 400px;
+	width: 450px;
 	max-width: 100%;
 	background-color: #383B42;
 	border-top: 2px solid #9C9C9C;
@@ -19,6 +19,7 @@
 	border-bottom: 2px solid #585858;
 	border-radius: 10px;
 	font-size: 1rem;
+	font-family: 'Roboto';
 	transition: background-color .1s ease;
 	/* font-weight: 300; */
 }
@@ -73,10 +74,11 @@
 	color: white;
 	border: none;
 	border-radius: 8px;
-	box-shadow: inset 0px 0px 40px -30px #0006;
+	box-shadow: inset 0px 0px 40px -30px #0000;
 	transition: box-shadow .3s ease;
 }
 
 .itemView .formSubmit:hover {
 	box-shadow: inset 400px 0px 40px -30px #0006;
 }
+
