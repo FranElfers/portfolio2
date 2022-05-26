@@ -17,6 +17,8 @@
 	width: 90px;
 	border-radius: 5px;
 	line-height: 0;
+	background-color: transparent;
+	border: none;
 	transition: background-color .1s ease;
 }
 
@@ -33,6 +35,7 @@
 
 .socialDetail {
 	display: flex;
+	gap: 1rem;
 	width: 100%;
 	height: 350px;
 }
@@ -67,6 +70,7 @@
 	display: flex;
 	gap: 5px;
 	align-items: center;
+	font-size: 0.9rem;
 }
 
 /* LANGUAGE */
@@ -79,6 +83,7 @@
 
 /* RIGHT ICONS */
 .socialDetail svg {
+	width: 20px;
 	fill: #9c9c9c;
 }
 
@@ -86,3 +91,15 @@
 .socialDetail > div:first-child svg {
 	fill: white;
 }
+
+/* TEMPORAL, FIX THIS */
+.socialDetail {
+	gap: 0.4rem;
+	width: 106%;
+	transform: translateX(-10px);
+}
+
+.socialDetail .title {
+	font-size: 0.8rem;
+}
+/* TEMPORAL, FIX THIS */
