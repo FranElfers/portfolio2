@@ -13,7 +13,7 @@ export const MenuItem: FunctionComponent<ItemType> = (props) => {
 	}
 
 	return <div className={[styles.menuItem, styles.itemView].join(" ")} onClick={handleClick}>
-		<props.icon/><h3>{props.title}</h3>
+		<h3><props.icon/> {props.title}</h3>
 	</div>
 }
 

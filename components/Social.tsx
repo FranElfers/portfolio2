@@ -35,40 +35,72 @@ const GithubLanguage: FunctionComponent<{lan:string}> = ({ lan = "none"}) => {
 	</>
 }
 
+const RigthSection: FunctionComponent<{url?:string}> = ({ url, children }) => {
+	if (url === undefined) return <section>
+		{children}
+	</section>
+
+	return <section style={{ cursor: "pointer" }} onClick={() => window.open(url, '_blank')}>
+		{children}
+	</section>
+}
+
 const GithubSocialDetail: FunctionComponent = () => <div className={css.socialDetail}>
-	<div>
+	<div className={css.left}>
 		<img src="https://avatars.githubusercontent.com/u/39459727?v=4" alt="profile" />
-		<div className={css.subtitle}><RiGitRepositoryCommitsLine />195</div>
-		<p>contributions last year</p>
-		<div className={css.subtitle}><RiGitRepositoryCommitsLine />358</div>
-		<p>contributions total</p>
-		<div className={css.subtitle}><RiGitRepositoryCommitsLine />24</div>
-		<p>repositories</p>
+		<section>
+			<div><RiGitRepositoryCommitsLine />195</div>
+			<p>contributions last year</p>
+		</section>
+		<section>
+			<div><RiGitRepositoryCommitsLine />358</div>
+			<p>contributions total</p>
+		</section>
+		<section>
+			<div><RiGitRepositoryCommitsLine />24</div>
+			<p>repositories</p>
+		</section>
 	</div>
-	<div>
-		<div className={css.title}><RiGitRepositoryLine /> portfolio <GithubLanguage lan='ts' /></div>
-		<p>New portfolio including ThreeJS</p>
-		<div className={css.title}><RiGitRepositoryLine /> vigenere-cipher <GithubLanguage lan='js' /></div>
-		<p>Classic Vigenère cipher (a cipher that incorporates the message of the text into the key).</p>
-		<div className={css.title}><RiGitRepositoryLine /> github-get-contributions <GithubLanguage lan='js' /></div>
-		<p>Get total git contributions of any user</p>
-		<div className={css.title}><RiGitRepositoryLine /> benawad-reactinterview <GithubLanguage lan='js' /></div>
-		<p>Clément Mihailescu code from Ben Awad React intermediate interview, but optimized by me.</p>
+	<div className={css.right}>
+		<RigthSection url="https://github.com/FranElfers/portfolio2">
+			<div><RiGitRepositoryLine /> portfolio <GithubLanguage lan='ts' /></div>
+			<p>New portfolio including ThreeJS</p>
+		</RigthSection>
+		<RigthSection url="https://github.com/FranElfers/vigenere-cipher">
+			<div><RiGitRepositoryLine /> vigenere-cipher <GithubLanguage lan='js' /></div>
+			<p>Classic Vigenère cipher (a cipher that incorporates the message of the text into the key).</p>
+		</RigthSection>
+		<RigthSection url="https://github.com/FranElfers/github-get-contributions">
+			<div><RiGitRepositoryLine /> github-get-contributions <GithubLanguage lan='js' /></div>
+			<p>Get total git contributions of any user</p>
+		</RigthSection>
+		<RigthSection url="https://github.com/FranElfers/benawad-reactinterview">
+			<div><RiGitRepositoryLine /> benawad-reactinterview <GithubLanguage lan='js' /></div>
+			<p>Clément Mihailescu code from Ben Awad React intermediate interview, but optimized by me.</p>
+		</RigthSection>
 	</div>
 </div>
 
 const LinkedInSocialDetail: FunctionComponent = () => <div className={css.socialDetail}>
-	<div>
+	<div className={css.left}>
 		<img src="https://media-exp1.licdn.com/dms/image/C4E03AQFRqQ95K43RzA/profile-displayphoto-shrink_800_800/0/1583444261521?e=1658966400&v=beta&t=bjqaFa4e7GI5wBfaxT4XP91qnnOSBoaFgyjZzDQeFNM" alt="profile" />
-		<div className={css.subtitle}><RiGitRepositoryCommitsLine />63</div>
-		<p>contacts</p>
+		<section>
+			<div><RiGitRepositoryCommitsLine />63</div>
+			<p>contacts</p>
+		</section>
 	</div>
-	<div>
-		<div className={css.title}>Tutor de ReactJS en Coderhouse.<br/>Técnico en informática.</div>
-		<div className={css.title}><RiGitRepositoryLine />Licenses & certifications</div>
-		<p>Coderhouse - ReactJS <br/>LinkedIn - Github<br/>LinkedIn - Github<br/>LinkedIn - JavaScript</p>
-		<div className={css.title}><HiOutlineClipboardCheck />Skills</div>
-		<p>CSS<br/>ReactJS<br/>NodeJS<br/>JavaScript<br/>Git<br/>HTML</p>
+	<div className={css.right}>
+		<section>
+			<div>Tutor de ReactJS en Coderhouse.<br/>Técnico en informática.</div>
+		</section>
+		<section>
+			<div><RiGitRepositoryLine />Licenses & certifications</div>
+			<p>Coderhouse - ReactJS <br/>LinkedIn - Github<br/>LinkedIn - Github<br/>LinkedIn - JavaScript</p>
+		</section>
+		<section>
+			<div><HiOutlineClipboardCheck />Skills</div>
+			<p>CSS<br/>ReactJS<br/>NodeJS<br/>JavaScript<br/>Git<br/>HTML</p>
+		</section>
 	</div>
 </div>
 
