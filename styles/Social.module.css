@@ -26,13 +26,6 @@
 	background-color: #fff2;
 }
 
-/* deberia corregir el color desde el archivo */
-.socialScreen [src="/linkedin.svg"],
-.socialScreen [src="/codewars.svg"],
-.socialScreen [src="/codepen.svg"] {
-	filter: invert(1);
-}
-
 .socialDetail {
 	display: flex;
 	gap: 1rem;
