@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { Dispatch, FunctionComponent, SetStateAction, useState } from "react";
 import css from '../styles/Social.module.css';
-import { RiGitRepositoryCommitsLine, RiGitRepositoryLine } from 'react-icons/ri';
+import { RiGitRepositoryCommitsLine, RiGitRepositoryLine, RiRecordCircleFill } from 'react-icons/ri';
 import { HiOutlineClipboardCheck } from 'react-icons/hi';
+import { SiCodewars } from 'react-icons/si';
+import { FaMedal } from 'react-icons/fa'
 
 type CurrentDetail = "github" | "linkedin" | "codewars" | "discord"
 
@@ -11,13 +13,12 @@ const GithubIcon: FunctionComponent = () => {
 }
 
 interface LinkType {
-	href: string
 	tag: CurrentDetail
 	state: Dispatch<SetStateAction<CurrentDetail>>
 }
 
-const SocialLink: FunctionComponent<LinkType> = ({ href, tag, state }) => {
-	return <button onClick={()=>state(tag)} >
+const SocialLink: FunctionComponent<LinkType> = ({ tag, state }) => {
+	return <button onClick={()=>state(tag)}>
 		<Image src={`/${tag}.svg`} width={80} height={80} />
 	</button>
 }
@@ -36,18 +37,16 @@ const GithubLanguage: FunctionComponent<{lan:string}> = ({ lan = "none"}) => {
 }
 
 const RigthSection: FunctionComponent<{url?:string}> = ({ url, children }) => {
-	if (url === undefined) return <section>
-		{children}
-	</section>
-
-	return <section style={{ cursor: "pointer" }} onClick={() => window.open(url, '_blank')}>
+	return url === undefined
+		? <section>{children}</section>
+		: <section style={{ cursor: "pointer" }} onClick={() => window.open(url, '_blank')}>
 		{children}
 	</section>
 }
 
 const GithubSocialDetail: FunctionComponent = () => <div className={css.socialDetail}>
 	<div className={css.left}>
-		<img src="https://avatars.githubusercontent.com/u/39459727?v=4" alt="profile" />
+		<img src="https://avatars.githubusercontent.com/u/39459727?v=4" alt="profile" onClick={() => window.open("https://github.com/franelfers", '_blank')}/>
 		<section>
 			<div><RiGitRepositoryCommitsLine />195</div>
 			<p>contributions last year</p>
@@ -83,9 +82,9 @@ const GithubSocialDetail: FunctionComponent = () => <div className={css.socialDe
 
 const LinkedInSocialDetail: FunctionComponent = () => <div className={css.socialDetail}>
 	<div className={css.left}>
-		<img src="https://media-exp1.licdn.com/dms/image/C4E03AQFRqQ95K43RzA/profile-displayphoto-shrink_800_800/0/1583444261521?e=1658966400&v=beta&t=bjqaFa4e7GI5wBfaxT4XP91qnnOSBoaFgyjZzDQeFNM" alt="profile" />
+		<img src="https://media-exp1.licdn.com/dms/image/C4E03AQFRqQ95K43RzA/profile-displayphoto-shrink_800_800/0/1583444261521?e=1658966400&v=beta&t=bjqaFa4e7GI5wBfaxT4XP91qnnOSBoaFgyjZzDQeFNM" alt="profile" onClick={() => window.open("https://linkedin.com/in/franciscoelfers/", '_blank')}/>
 		<section>
-			<div><RiGitRepositoryCommitsLine />63</div>
+			<div><RiRecordCircleFill fill="none" />63</div>
 			<p>contacts</p>
 		</section>
 	</div>
@@ -94,7 +93,7 @@ const LinkedInSocialDetail: FunctionComponent = () => <div className={css.social
 			<div>Tutor de ReactJS en Coderhouse.<br/>Técnico en informática.</div>
 		</section>
 		<section>
-			<div><RiGitRepositoryLine />Licenses & certifications</div>
+			<div><HiOutlineClipboardCheck />Licenses & certifications</div>
 			<p>Coderhouse - ReactJS <br/>LinkedIn - Github<br/>LinkedIn - Github<br/>LinkedIn - JavaScript</p>
 		</section>
 		<section>
@@ -104,8 +103,41 @@ const LinkedInSocialDetail: FunctionComponent = () => <div className={css.social
 	</div>
 </div>
 
+const CodewarsSocialDetail: FunctionComponent = () => <div className={css.socialDetail}>
+	<div className={css.left}>
+		<img src="https://avatars.githubusercontent.com/u/39459727?v=4" alt="profile" onClick={() => window.open("https://www.codewars.com/users/FranElfers", '_blank')}/>
+		<section>
+			<div><SiCodewars />4 KYU</div>
+			<p>current rank</p>
+		</section>
+		<section>
+			<div><SiCodewars />500</div>
+			<p>honor</p>
+		</section>
+	</div>
+	<div className={css.right}>
+		<section>
+			<div><FaMedal />32</div>
+			<p>Completed Kata. 1x3kyu, 4x4kyu, 9x5kyu</p>
+		</section>
+		<section>
+			<div><FaMedal />17%</div>
+			<p>Leaderboard percentile</p>
+		</section>
+		<section>
+			<div><FaMedal />#69509</div>
+			<p>Leaderboard position</p>
+		</section>
+		<section>
+			<div><FaMedal />1.2%</div>
+			<p>Rank completion until 3kyu</p>
+		</section>
+	</div>
+</div>
+
 const SocialDetail: FunctionComponent<{current:CurrentDetail}> = ({ current }) => {
 	if (current === "linkedin") return <LinkedInSocialDetail />
+	if (current === "codewars") return <CodewarsSocialDetail />
 	return <GithubSocialDetail />
 }
 
@@ -114,11 +146,11 @@ const Social: FunctionComponent = () => {
 	const [ current, setCurrent ] = useState<CurrentDetail>("github")
 	return <div className={css.socialScreen}>
 		<div className={css.grid}>
-			<SocialLink state={setCurrent} href='https://github.com/franelfers/' tag='github' />
-			<SocialLink state={setCurrent} href='https://linkedin.com/in/franciscoelfers' tag='linkedin' />
-			<SocialLink state={setCurrent} href='https://www.codewars.com/users/FranElfers' tag='codewars' />
-			<SocialLink state={setCurrent} href='about:blank' tag='discord' />
+			<SocialLink state={setCurrent} tag='github' />
+			<SocialLink state={setCurrent} tag='linkedin' />
+			<SocialLink state={setCurrent} tag='codewars' />
 		</div>
+		<br />
 		<SocialDetail current={current} />
 	</div>
 }

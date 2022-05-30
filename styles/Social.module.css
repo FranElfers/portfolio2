@@ -55,6 +55,7 @@
 }
 
 .socialDetail .left img[alt="profile"] {
+	cursor: pointer;
 	width: 80px;
 	height: 80px;
 	border-radius: 50%;
