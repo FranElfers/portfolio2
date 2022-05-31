@@ -15,9 +15,9 @@ const Skills: FunctionComponent = () => {
 		<div className={css.list}>
 			<Item url="/js.svg" name="Javascript"/> 
 			<Item url="/ts.svg" name="Typescript" />
-			<Item url="/python.svg" name="Python" />
 			<Item url="/html.svg" name="HTML" />
 			<Item url="/css.svg" name="CSS"/>
+			<Item url="/python.svg" name="Python" />
 		</div>
 		<h4>Front-end</h4>
 		<div className={css.list}>
@@ -31,7 +31,7 @@ const Skills: FunctionComponent = () => {
 		<div className={css.list}>
 			<Item url="/nodejs.svg" name="Nodejs" />
 			<Item url="/expressjs.svg" name="Expressjs" />
-			<Item url="/socketio.svg" name="Websockets" />
+			<Item url="/socketio.svg" name="Socket.io" />
 			<Item url="/api.svg" name="RestAPI" />
 		</div>
 		<h4>Databases</h4>

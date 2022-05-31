@@ -4,7 +4,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   /* overflow: hidden; */
 }
@@ -20,6 +20,10 @@ body {
   font-style: normal;
   font-weight: 400;
   font-display: swap ;
+}
+
+h1,h2,h3,h4,h5 {
+	font-family: 'Poppins';
 }
 
 a {

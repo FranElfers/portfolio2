@@ -8,6 +8,12 @@
 	color: white;
 }
 
+@media only screen and (max-height: 900px) {
+  .menu {
+		justify-content: unset;
+  }
+}
+
 .itemView {
 	width: 450px;
 	max-width: 100%;
@@ -18,7 +24,6 @@
 	border-bottom: 2px solid #585858;
 	border-radius: 10px;
 	font-size: 1rem;
-	font-family: 'Roboto';
 	transition: background-color .1s ease;
 	/* font-weight: 300; */
 }
