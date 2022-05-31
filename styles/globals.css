@@ -39,3 +39,7 @@ button {
 input {
 	font-family: inherit;
 }
+
+.el {
+  padding: 1rem;
+}

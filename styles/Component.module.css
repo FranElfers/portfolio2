@@ -64,7 +64,9 @@
 	resize: vertical; /* textarea fixed width */
 }
 
+/* Submit button */
 .itemView .formSubmit {
+	margin-top: 1rem;
 	padding: 7px;
 	width: 100%;
 	background: rgb(10,0,184);
@@ -77,6 +79,6 @@
 }
 
 .itemView .formSubmit:hover {
-	box-shadow: inset 400px 0px 40px -30px #0006;
+	box-shadow: inset 500px 0px 40px -30px #0006;
 }
 
