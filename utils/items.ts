@@ -4,6 +4,7 @@ import { MdConstruction, MdManageAccounts, MdOutline3P, MdOutlineBadge, MdPublic
 import Feedback from "../components/Feedback";
 import Skills from "../components/Skills";
 import Social from "../components/Social"
+import Tools from "../components/Tools"
 
 export interface ItemType {
 	title: string
@@ -39,7 +40,8 @@ export const list: ItemType[] = [
 	{
 		icon: MdConstruction,
 		url: '/tools',
-		title: 'Tools I created'
+		title: 'Tools I created',
+		component: Tools
 	},
 	{
 		icon: MdOutline3P,

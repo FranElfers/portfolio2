@@ -5,6 +5,10 @@
 	margin: 1.3em 0 .7em;
 }
 
+.skillsScreen h4:first-child {
+	margin-top: 0;
+}
+
 .skillsScreen h4::before, .skillsScreen h4::after {
 	content: "";
 	background-color: #505050;

@@ -1,0 +1,34 @@
+.toolsScreen {
+	padding: 1rem;
+}
+
+.tool h4 {
+	margin: 0;
+	font-size: 1.1em;
+}
+
+.tool h4 a {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+}
+
+.tool h4 a:hover {
+	text-decoration: underline;
+}
+
+/* SVG title icon */
+.tool h4 svg {
+	width: 14px;
+}
+
+.tool span {
+	font-size: .8em;
+	color: #9c9c9c;
+}
+
+.tool p {
+	margin: 0.4em 0 1.6em;
+	font-size: .9em;
+	color: #cfcfcf;
+}

@@ -37,7 +37,7 @@
 	letter-spacing: 0.1rem;
 }
 
-.itemView a {
+.itemView h3 a {
 	float: right;
 	font-size: 0.9rem;
 	margin-left: auto;

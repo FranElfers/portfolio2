@@ -30,13 +30,25 @@
 }
 
 .socialDetail .left {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 1rem;
 	padding: 0 0.5rem;
 	min-width: 110px;
-	border-right: 1px solid #4C4F55;
+	/* border-right: 1px solid #4C4F55; */
+}
+
+.socialDetail .left::after {
+	content: "";
+	background-color: #505050;
+	position: absolute;
+	width: 1px;
+	height: 220px;
+	top: 0;
+	right: 0;
+	box-shadow: -1px 0px #2c2c2c;
 }
 
 .socialDetail .left section {
