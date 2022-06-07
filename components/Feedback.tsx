@@ -14,6 +14,14 @@ const Feedback:FunctionComponent = () => {
 			text: textField.current.value
 		}
 		// ship this feedback to my api
+		fetch("https://purpose-tiger.herokuapp.com/feedback", {
+			method: "POST",
+			body: JSON.stringify(feedback),
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then(console.log).catch(alert)
 	}
 
 	return <div className="el">
