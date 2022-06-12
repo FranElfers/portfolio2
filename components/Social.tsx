@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Dispatch, FunctionComponent, SetStateAction, useState } from "react";
+import { Dispatch, FunctionComponent, SetStateAction, useEffect, useState } from "react";
 import css from '../styles/Social.module.css';
 import { RiGitRepositoryCommitsLine, RiGitRepositoryLine, RiRecordCircleFill } from 'react-icons/ri';
 import { HiOutlineClipboardCheck } from 'react-icons/hi';
@@ -103,37 +103,50 @@ const LinkedInSocialDetail: FunctionComponent = () => <div className={css.social
 	</div>
 </div>
 
-const CodewarsSocialDetail: FunctionComponent = () => <div className={css.socialDetail}>
-	<div className={css.left}>
-		<img src="https://avatars.githubusercontent.com/u/39459727?v=4" alt="profile" onClick={() => window.open("https://www.codewars.com/users/FranElfers", '_blank')}/>
-		<section>
-			<div><SiCodewars />4 KYU</div>
-			<p>current rank</p>
-		</section>
-		<section>
-			<div><SiCodewars />500</div>
-			<p>honor</p>
-		</section>
+const CodewarsSocialDetail: FunctionComponent = () => {
+	const [ data, setData ] = useState<any>()
+
+	useEffect(() => {
+		fetch('https://purpose-tiger.herokuapp.com/codewars/FranElfers')
+			.then(res => res.json())
+			.then(setData)
+	},[])
+
+
+	if (data === undefined) return <p>loading</p>
+
+	return <div className={css.socialDetail}>
+		<div className={css.left}>
+			<img src="https://avatars.githubusercontent.com/u/39459727?v=4" alt="profile" onClick={() => window.open("https://www.codewars.com/users/FranElfers", '_blank')}/>
+			<section>
+				<div><SiCodewars />{data.ranks.overall.name}</div>
+				<p>current rank</p>
+			</section>
+			<section>
+				<div><SiCodewars />{data.honor}</div>
+				<p>honor</p>
+			</section>
+		</div>
+		<div className={css.right}>
+			<section>
+				<div><FaMedal />{data.codeChallenges.totalCompleted}</div>
+				<p>Completed Kata</p>
+			</section>
+			<section>
+				<div><FaMedal />{data.honorPercentile}</div>
+				<p>Leaderboard percentile</p>
+			</section>
+			<section>
+				<div><FaMedal />#{data.leaderboardPosition}</div>
+				<p>Leaderboard position</p>
+			</section>
+			<section>
+				<div><FaMedal />{data.rankCompletion}</div>
+				<p>Rank completion until {parseInt(data.ranks.overall.name)-1}kyu</p>
+			</section>
+		</div>
 	</div>
-	<div className={css.right}>
-		<section>
-			<div><FaMedal />32</div>
-			<p>Completed Kata. 1x3kyu, 4x4kyu, 9x5kyu</p>
-		</section>
-		<section>
-			<div><FaMedal />17%</div>
-			<p>Leaderboard percentile</p>
-		</section>
-		<section>
-			<div><FaMedal />#69509</div>
-			<p>Leaderboard position</p>
-		</section>
-		<section>
-			<div><FaMedal />1.2%</div>
-			<p>Rank completion until 3kyu</p>
-		</section>
-	</div>
-</div>
+}
 
 const SocialDetail: FunctionComponent<{current:CurrentDetail}> = ({ current }) => {
 	if (current === "linkedin") return <LinkedInSocialDetail />
