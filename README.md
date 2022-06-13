@@ -9,3 +9,4 @@ Made with Nextjs and Threejs.
 - [ ] animar el cambio de pantallas
 - [ ] cambiar favicon
 - [ ] smart fetch
+- [ ] esqueleto de lo que sea fetch
