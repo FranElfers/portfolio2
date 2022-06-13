@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 import { IconType } from "react-icons";
 import { MdConstruction, MdManageAccounts, MdOutline3P, MdOutlineBadge, MdPublic, MdVerified, MdWarning } from "react-icons/md";
 import Feedback from "../components/Feedback";
+import Resume from "../components/Resume";
 import Skills from "../components/Skills";
 import Social from "../components/Social"
 import Tools from "../components/Tools"
@@ -24,7 +25,8 @@ export const list: ItemType[] = [
 	{
 		icon: MdOutlineBadge,
 		url: '/resume',
-		title: 'Resume'
+		title: 'Resume',
+		component: Resume
 	},
 	{
 		icon: MdVerified,

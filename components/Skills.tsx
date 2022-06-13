@@ -4,14 +4,14 @@ import css from "../styles/Skills.module.css"
 
 const Item: FunctionComponent<{url:string, name:string}> = ({url, name}) => {
 	return <div className={css.item}>
-		<img src={url} height={30} style={{maxWidth:'100%'}} />
+		<img src={'/logos'+url} height={30} style={{maxWidth:'100%'}} />
 		<p>{name}</p>
 	</div>
 }
 
 const Skills: FunctionComponent = () => {
 	return <div className={`el ${css.skillsScreen}`}>
-		<h4>Langs</h4>
+		<h4>Languages</h4>
 		<div className={css.list}>
 			<Item url="/js.svg" name="Javascript"/> 
 			<Item url="/ts.svg" name="Typescript" />
@@ -46,7 +46,7 @@ const Skills: FunctionComponent = () => {
 			<Item url="/figma.svg" name="Figma" />
 			<Item url="/docker.svg" name="Docker" />
 		</div>
-		<h4>Learning</h4>
+		<h4>Currently learning</h4>
 		<div className={css.list}>
 			<Item url="/rust.svg" name="Rust" />
 		</div>
