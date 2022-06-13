@@ -11,3 +11,5 @@ Made with Nextjs and Threejs.
 - [ ] Favicon
 
 - [ ] animar el cambio de pantallas
+
+- [ ] cambiar favicon
