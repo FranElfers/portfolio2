@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { IconType } from "react-icons";
 import { MdConstruction, MdManageAccounts, MdOutline3P, MdOutlineBadge, MdPublic, MdVerified, MdWarning } from "react-icons/md";
+import Achievements from "../components/Achievements";
 import Feedback from "../components/Feedback";
 import Resume from "../components/Resume";
 import Skills from "../components/Skills";
@@ -31,7 +32,8 @@ export const list: ItemType[] = [
 	{
 		icon: MdVerified,
 		url: '/achievements',
-		title: 'Achievements'
+		title: 'Achievements',
+		component: Achievements
 	},
 	{
 		icon: MdPublic,
